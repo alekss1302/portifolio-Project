@@ -1,6 +1,8 @@
 # jobs/views.py
-from django.views.generic import TemplateView
+from django.shortcuts import render
+from .models import Job
 
-class Home(TemplateView):
-    template_name = 'home.html'
-    # Add any additional logic specific to your Home view
+
+def home(request):
+    jobs = Job.objects
+    return render(request, 'jobs/home.html', {'jobs':jobs})
